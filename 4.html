@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chai aur code </title>
+</head>
+<body style="background-color:#212121;color:#fff">
+    <ul class="language">
+        <li>javascript</li>
+        <li>c</li>
+
+    </ul>
+
+   <script>
+    function addLanguage(langName)
+    {
+       const newlang= document.createElement('li');//<li></li> create huwa h js mein bss DOM mein nhi
+       newlang.innerHTML=`${langName}`//<li>pytho (name add hoga)</li>innerhtml wagera mein pura traversal hota h
+       document.querySelector(`.language`).appendChild(newlang);//language classs m jake select huwa then append child mtln ekdm last m add
+       //problem pura tree traverse karna parta h ..jaha v inner html rhega waha compltet traversal hota h  
+    }
+    addLanguage("python")
+    addLanguage("c++")
+
+    //now optimize way when lakhs of list are there not possible to traverse completly
+
+    function addoptilanguage(langname)
+    {
+       const newlang= document.createElement('li');
+       //const addtext=document.createTextNode(langname);
+       //li.appendChild(addtext)
+       newlang.appendChild(document.createTextNode(langname))
+       document.querySelector('.language').appendChild(newlang)
+    }
+
+    addoptilanguage('java')
+
+
+    //edit a value
+
+   const seclang= document.querySelector("li:nth-child(2)")
+  //agr confusion ho rha h ki select huwaki nhi to console.log(seclan)
+  // krke dekho then console mein jao aur dekho wo complete emelemnt arha h ki nhu   
+   //seclang.innerHTML="mojo"; //again not optimize
+   const newli=document.createElement('li')
+   newli.textContent="mojo";//ab hawa mein h add nhi kia
+   seclang.replaceWith(newli) //eahah ekdum pura new wlwmwnt bna ke kia h
+
+//    edit
+const firstlang=document.querySelector("li:first-child")
+firstlang.outerHTML='<li>typescript</li>'
+
+// remove
+const lastlang=document.querySelector('li:nth-child(5)')
+lastlang.remove()
+
+   </script> 
+</body>
+</html>

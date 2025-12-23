@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>htnml Events </title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div >
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+            <!--  <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" onclick="alert('owl')"></li>
+              ye ais e v krdkte the lekin ye achhi approach nhi h not a feasable option when we will have to
+              scale our project..react mein krste h kyuki react scalable hhota h -->
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+</body>
+<!-- js generaly sequential hota h -->
+<script>
+    // document.getElementById('owl').onclick = function(){
+    //     alert("owl clicked")
+    // }
+    // no problem in this way but features mein dikkat dega addlistener
+
+     // attachEvent()..old
+    // jQuery - on..old
+
+    // type, timestamp, defaultPrevented
+    // target, toElement, srcElement, currentTarget,
+    // clientX, clientY, screenX, screenY...interview prespective
+    // altkey, ctrlkey, shiftkey, keyCode
+
+    // document.getElementById('images').addEventListener('click', function(e){
+    //     console.log("clicked inside the ul");
+    // }, false) //yaha koi v picture pe click krnepr hoga
+
+
+    // defalut v false he hota h to ye likhna parta h ..default h to likhna parta nhi h interview imp
+
+    // document.getElementById('owl').addEventListener('click', function(e){
+    //      console.log("owl clicked"); //ye sirf owl pic pe clik pe hoga print
+    //but owl v to url k part h to issme kya hoga?
+    //event buuble niche se upr to pehle owl clikc print then url wala
+
+//agr eaha true likhte to pehle clicked inside the ul print hoga then owl clicked print hoga
+// ye huwa event capture mode...use case kya h wo dekh k krna prega
+
+
+    //     e.stopPropagation() //bubble hpke upr element m nhi jayegs
+    // }, false)
+    
+    // document.getElementById('google').addEventListener('click',function(e){
+    //     e.preventDefault();
+    //     e.stopPropagation()
+    //     console.log("google clicked");
+    // }, false)
+   
+    
+    document.querySelector('#images').addEventListener('click', function(e){
+        console.log(e.target.tagName);
+        if (e.target.tagName === 'IMG')
+        //if lagaya agr nhi lagate to goole pe click kroge direct sab remove since google k 
+    // parent element is list to pura gayab hoyega
+     {
+            console.log(e.target.id);
+            let removeIt = e.target.parentNode
+            removeIt.remove()
+            //removeIt.parentNode.removeChild(removeIt)
+        }
+    
+        
+    })
+    
+    //removeIt.parentNode.removeChild(removeIt)
+</script>
+</html>
